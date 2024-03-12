@@ -1,0 +1,927 @@
+Program.Sub.ScreenSU.Start
+Gui.frm_kpi_setup..create
+Gui.frm_kpi_setup..caption("KPI Setup")
+Gui.frm_kpi_setup..size(8955,9870)
+Gui.frm_kpi_setup..minx(9105)
+Gui.frm_kpi_setup..miny(9870)
+Gui.frm_kpi_setup..position(0,0)
+Gui.frm_kpi_setup..event(UnLoad,frm_kpi_setup_unload)
+Gui.frm_kpi_setup..alwaysontop(False)
+Gui.frm_kpi_setup..fontname("Arial")
+Gui.frm_kpi_setup..fontsize(8)
+Gui.frm_kpi_setup..forecolor(0)
+Gui.frm_kpi_setup..fontstyle(False,False,False,False)
+Gui.frm_kpi_setup..BackColor(-2147483633)
+Gui.frm_kpi_setup..controlbox(True)
+Gui.frm_kpi_setup..maxbutton(True)
+Gui.frm_kpi_setup..minbutton(True)
+Gui.frm_kpi_setup..mousepointer(0)
+Gui.frm_kpi_setup..moveable(True)
+Gui.frm_kpi_setup..sizeable(False)
+Gui.frm_kpi_setup..ShowInTaskBar(True)
+Gui.frm_kpi_setup..titlebar(True)
+Gui.frm_kpi_setup.lbl_months_back.create(label,"Months Back",True,1065,255,1,150,480,True,0,Arial,8,-2147483633,0)
+Gui.frm_kpi_setup.lbl_months_back.defaultvalue("")
+Gui.frm_kpi_setup.lbl_months_back.controlgroup(0)
+Gui.frm_kpi_setup.txt_months_back.create(textbox,"",True,1050,300,0,150,720,True,0,Arial,8,-2147483643,1)
+Gui.frm_kpi_setup.txt_months_back.defaultvalue("")
+Gui.frm_kpi_setup.txt_months_back.controlgroup(0)
+Gui.frm_kpi_setup.chk_all_data.create(checkbox)
+Gui.frm_kpi_setup.chk_all_data.caption("All Data")
+Gui.frm_kpi_setup.chk_all_data.visible(True)
+Gui.frm_kpi_setup.chk_all_data.size(945,285)
+Gui.frm_kpi_setup.chk_all_data.zorder(0)
+Gui.frm_kpi_setup.chk_all_data.position(150,1170)
+Gui.frm_kpi_setup.chk_all_data.enabled(True)
+Gui.frm_kpi_setup.chk_all_data.alignment(0)
+Gui.frm_kpi_setup.chk_all_data.fontname("Arial")
+Gui.frm_kpi_setup.chk_all_data.fontsize(8)
+Gui.frm_kpi_setup.chk_all_data.event(Click,chk_all_data_click)
+Gui.frm_kpi_setup.chk_all_data.defaultvalue("")
+Gui.frm_kpi_setup.chk_all_data.controlgroup(0)
+Gui.frm_kpi_setup.cmd_setup_save.create(button)
+Gui.frm_kpi_setup.cmd_setup_save.caption("Save")
+Gui.frm_kpi_setup.cmd_setup_save.visible(True)
+Gui.frm_kpi_setup.cmd_setup_save.size(1170,375)
+Gui.frm_kpi_setup.cmd_setup_save.zorder(0)
+Gui.frm_kpi_setup.cmd_setup_save.position(150,1545)
+Gui.frm_kpi_setup.cmd_setup_save.enabled(True)
+Gui.frm_kpi_setup.cmd_setup_save.fontname("Arial")
+Gui.frm_kpi_setup.cmd_setup_save.fontsize(8)
+Gui.frm_kpi_setup.cmd_setup_save.event(Click,cmd_setup_save_click)
+Gui.frm_kpi_setup.cmd_setup_save.defaultvalue("")
+Gui.frm_kpi_setup.cmd_setup_save.controlgroup(0)
+Gui.frm_kpi_setup.gsfgCustomers.create(gsflexgrid)
+Gui.frm_kpi_setup.gsfgCustomers.FixedRows(0)
+Gui.frm_kpi_setup.gsfgCustomers.FixedCols(0)
+Gui.frm_kpi_setup.gsfgCustomers.visible(False)
+Gui.frm_kpi_setup.gsfgCustomers.size(8385,2220)
+Gui.frm_kpi_setup.gsfgCustomers.zorder(0)
+Gui.frm_kpi_setup.gsfgCustomers.position(150,6435)
+Gui.frm_kpi_setup.gsfgCustomers.enabled(True)
+Gui.frm_kpi_setup.gsfgCustomers.event(CellExit,gsfgcustomers_cellexit)
+Gui.frm_kpi_setup.gsfgCustomers.event(CheckClick,gsfgcustomers_checkclick)
+Gui.frm_kpi_setup.lblTotalBudget.create(label,"",True,6540,255,1,2700,3400,True,1,Arial,8,-2147483633,0)
+Gui.frm_kpi_setup.lblTotalBudget.defaultvalue("")
+Gui.frm_kpi_setup.lblTotalBudget.controlgroup(0)
+Gui.frm_kpi_setup.lblTotalBudgetCap.create(label,"Annual Budgets",True,2655,330,1,150,6090,True,0,Arial,11,-2147483633,0)
+Gui.frm_kpi_setup.lblTotalBudgetCap.defaultvalue("")
+Gui.frm_kpi_setup.lblTotalBudgetCap.controlgroup(0)
+Gui.frm_kpi_setup.txtOverhead.create(textbox,"",True,915,300,0,7590,690,True,0,Arial,8,-2147483643,1)
+Gui.frm_kpi_setup.txtOverhead.numericonly(1)
+Gui.frm_kpi_setup.txtOverhead.defaultvalue("")
+Gui.frm_kpi_setup.txtOverhead.controlgroup(0)
+Gui.frm_kpi_setup.lblOverhead.create(label,"Overhead",True,915,255,1,7575,480,True,0,Arial,8,-2147483633,0)
+Gui.frm_kpi_setup.lblOverhead.defaultvalue("")
+Gui.frm_kpi_setup.lblOverhead.controlgroup(0)
+Gui.frm_kpi_setup.lblBudget.create(label,"Budget",True,720,255,1,6555,480,True,0,Arial,8,-2147483633,0)
+Gui.frm_kpi_setup.lblBudget.defaultvalue("")
+Gui.frm_kpi_setup.lblBudget.controlgroup(0)
+Gui.frm_kpi_setup.txt_budget.create(textbox,"",True,780,300,0,6570,705,True,0,Arial,8,-2147483643,1)
+Gui.frm_kpi_setup.txt_budget.numericonly(1)
+Gui.frm_kpi_setup.txt_budget.defaultvalue("")
+Gui.frm_kpi_setup.txt_budget.controlgroup(0)
+Gui.frm_kpi_setup.cmdCreateNewBudget.create(button)
+Gui.frm_kpi_setup.cmdCreateNewBudget.caption("New Budget")
+Gui.frm_kpi_setup.cmdCreateNewBudget.visible(True)
+Gui.frm_kpi_setup.cmdCreateNewBudget.size(1170,375)
+Gui.frm_kpi_setup.cmdCreateNewBudget.zorder(0)
+Gui.frm_kpi_setup.cmdCreateNewBudget.position(150,8745)
+Gui.frm_kpi_setup.cmdCreateNewBudget.enabled(True)
+Gui.frm_kpi_setup.cmdCreateNewBudget.fontname("Arial")
+Gui.frm_kpi_setup.cmdCreateNewBudget.fontsize(8)
+Gui.frm_kpi_setup.cmdCreateNewBudget.event(Click,cmdcreatenewbudget_click)
+Gui.frm_kpi_setup.cmdCreateNewBudget.defaultvalue("")
+Gui.frm_kpi_setup.cmdCreateNewBudget.controlgroup(0)
+Gui.frm_kpi_setup.chkDashboardRunning.create(checkbox)
+Gui.frm_kpi_setup.chkDashboardRunning.caption("Run Dashboard Extract on Task Scheduler")
+Gui.frm_kpi_setup.chkDashboardRunning.visible(True)
+Gui.frm_kpi_setup.chkDashboardRunning.size(3585,255)
+Gui.frm_kpi_setup.chkDashboardRunning.zorder(0)
+Gui.frm_kpi_setup.chkDashboardRunning.position(1455,1170)
+Gui.frm_kpi_setup.chkDashboardRunning.enabled(True)
+Gui.frm_kpi_setup.chkDashboardRunning.alignment(0)
+Gui.frm_kpi_setup.chkDashboardRunning.fontname("Arial")
+Gui.frm_kpi_setup.chkDashboardRunning.fontsize(8)
+Gui.frm_kpi_setup.chkDashboardRunning.defaultvalue("")
+Gui.frm_kpi_setup.chkDashboardRunning.controlgroup(0)
+Gui.frm_kpi_setup.dtpRefresh.create(datepicker)
+Gui.frm_kpi_setup.dtpRefresh.visible(True)
+Gui.frm_kpi_setup.dtpRefresh.size(1590,285)
+Gui.frm_kpi_setup.dtpRefresh.zorder(0)
+Gui.frm_kpi_setup.dtpRefresh.position(6930,1155)
+Gui.frm_kpi_setup.dtpRefresh.enabled(True)
+Gui.frm_kpi_setup.dtpRefresh.checkbox(False)
+Gui.frm_kpi_setup.dtpRefresh.defaultvalue("")
+Gui.frm_kpi_setup.dtpRefresh.controlgroup(0)
+Gui.frm_kpi_setup.chkSnapshot.create(checkbox)
+Gui.frm_kpi_setup.chkSnapshot.caption("Refresh Timeframe")
+Gui.frm_kpi_setup.chkSnapshot.visible(True)
+Gui.frm_kpi_setup.chkSnapshot.size(1785,255)
+Gui.frm_kpi_setup.chkSnapshot.zorder(0)
+Gui.frm_kpi_setup.chkSnapshot.position(5145,1170)
+Gui.frm_kpi_setup.chkSnapshot.enabled(True)
+Gui.frm_kpi_setup.chkSnapshot.alignment(0)
+Gui.frm_kpi_setup.chkSnapshot.fontname("Arial")
+Gui.frm_kpi_setup.chkSnapshot.fontsize(8)
+Gui.frm_kpi_setup.chkSnapshot.defaultvalue("")
+Gui.frm_kpi_setup.chkSnapshot.controlgroup(0)
+Gui.frm_kpi_setup.chkSnapshot.Event(Click,chkSnapshot_Click)
+Gui.frm_kpi_setup.lblFiscal.create(label,"First Month of Fiscal Year",True,2040,270,1,1440,480,True,0,Arial,8,-2147483633,0)
+Gui.frm_kpi_setup.lblFiscal.defaultvalue("")
+Gui.frm_kpi_setup.lblFiscal.controlgroup(0)
+Gui.frm_kpi_setup.lblPreviousYear.create(label,"Previous Year",True,1275,255,1,5055,480,True,0,Arial,8,-2147483633,0)
+Gui.frm_kpi_setup.lblPreviousYear.defaultvalue("")
+Gui.frm_kpi_setup.lblPreviousYear.controlgroup(0)
+Gui.frm_kpi_setup.lblCurrentYear.create(label,"Current Year",True,1215,255,1,3630,480,True,0,Arial,8,-2147483633,0)
+Gui.frm_kpi_setup.lblCurrentYear.defaultvalue("")
+Gui.frm_kpi_setup.lblCurrentYear.controlgroup(0)
+Gui.frm_kpi_setup.txtCurrentYear.create(textbox,"",True,1215,300,0,3630,720,True,0,Arial,8,-2147483643,1)
+Gui.frm_kpi_setup.txtCurrentYear.numericonly(2)
+Gui.frm_kpi_setup.txtCurrentYear.defaultvalue("")
+Gui.frm_kpi_setup.txtCurrentYear.controlgroup(0)
+Gui.frm_kpi_setup.txtPreviousYear.create(textbox,"",True,1215,300,0,5070,720,True,0,Arial,8,-2147483643,1)
+Gui.frm_kpi_setup.txtPreviousYear.numericonly(2)
+Gui.frm_kpi_setup.txtPreviousYear.defaultvalue("")
+Gui.frm_kpi_setup.txtPreviousYear.controlgroup(0)
+Gui.frm_kpi_setup.cmdAdd.create(button)
+Gui.frm_kpi_setup.cmdAdd.caption("Add")
+Gui.frm_kpi_setup.cmdAdd.visible(True)
+Gui.frm_kpi_setup.cmdAdd.size(660,375)
+Gui.frm_kpi_setup.cmdAdd.zorder(0)
+Gui.frm_kpi_setup.cmdAdd.position(7815,2490)
+Gui.frm_kpi_setup.cmdAdd.enabled(True)
+Gui.frm_kpi_setup.cmdAdd.fontname("Arial")
+Gui.frm_kpi_setup.cmdAdd.fontsize(8)
+Gui.frm_kpi_setup.cmdAdd.event(Click,cmdadd_click)
+Gui.frm_kpi_setup.cmdAdd.defaultvalue("")
+Gui.frm_kpi_setup.cmdAdd.controlgroup(0)
+Gui.frm_kpi_setup.cmdBrowse.create(button)
+Gui.frm_kpi_setup.cmdBrowse.caption("^")
+Gui.frm_kpi_setup.cmdBrowse.visible(True)
+Gui.frm_kpi_setup.cmdBrowse.size(600,375)
+Gui.frm_kpi_setup.cmdBrowse.zorder(0)
+Gui.frm_kpi_setup.cmdBrowse.position(1620,2505)
+Gui.frm_kpi_setup.cmdBrowse.enabled(True)
+Gui.frm_kpi_setup.cmdBrowse.fontname("Arial")
+Gui.frm_kpi_setup.cmdBrowse.fontsize(8)
+Gui.frm_kpi_setup.cmdBrowse.event(Click,cmdbrowse_click)
+Gui.frm_kpi_setup.cmdBrowse.defaultvalue("")
+Gui.frm_kpi_setup.cmdBrowse.controlgroup(0)
+Gui.frm_kpi_setup.ddlAccountType.create(dropdownlist)
+Gui.frm_kpi_setup.ddlAccountType.visible(True)
+Gui.frm_kpi_setup.ddlAccountType.size(5430,330)
+Gui.frm_kpi_setup.ddlAccountType.zorder(0)
+Gui.frm_kpi_setup.ddlAccountType.position(2295,2520)
+Gui.frm_kpi_setup.ddlAccountType.enabled(True)
+Gui.frm_kpi_setup.ddlAccountType.fontname("Arial")
+Gui.frm_kpi_setup.ddlAccountType.fontsize(8)
+Gui.frm_kpi_setup.ddlAccountType.defaultvalue("")
+Gui.frm_kpi_setup.ddlAccountType.controlgroup(0)
+Gui.frm_kpi_setup.txtGLAccount.create(textbox,"",True,1410,300,0,150,2550,True,0,Arial,8,-2147483643,1)
+Gui.frm_kpi_setup.txtGLAccount.defaultvalue("")
+Gui.frm_kpi_setup.txtGLAccount.controlgroup(0)
+Gui.frm_kpi_setup.gsfgAccounts.Create(GsFlexgrid)
+Gui.frm_kpi_setup.gsfgAccounts.Size(8325,2325)
+Gui.frm_kpi_setup.gsfgAccounts.Position(150,2970)
+Gui.frm_kpi_setup.gsfgAccounts.Event(CellEnter,gsfgaccounts_cellenter)
+Gui.frm_kpi_setup.lblAccounts.Create(Label,"GL Accounts",True,1935,285,0,150,2250,True,0,"Arial",11,-2147483633,0)
+Gui.frm_kpi_setup.lblKPISettings.Create(Label,"KPI Settings",True,1935,300,0,150,165,True,0,"Arial",11,-2147483633,0)
+Gui.frm_kpi_setup.cmd_uplgl.Create(Button)
+Gui.frm_kpi_setup.cmd_uplgl.Size(1170,375)
+Gui.frm_kpi_setup.cmd_uplgl.Position(165,5415)
+Gui.frm_kpi_setup.cmd_uplgl.Caption("Upload GL")
+Gui.frm_kpi_setup.cmd_uplgl.Event(Click,sub_uploadgl)
+Gui.frm_kpi_setup.ddlFiscal.Create(DropDownList)
+Gui.frm_kpi_setup.ddlFiscal.Size(1965,330)
+Gui.frm_kpi_setup.ddlFiscal.Position(1455,720)
+Gui.frm_kpi_setup_first..create
+Gui.frm_kpi_setup_first..caption("KPI First Time Setup")
+Gui.frm_kpi_setup_first..size(9600,1755)
+Gui.frm_kpi_setup_first..minx(0)
+Gui.frm_kpi_setup_first..miny(0)
+Gui.frm_kpi_setup_first..position(0,0)
+Gui.frm_kpi_setup_first..alwaysontop(False)
+Gui.frm_kpi_setup_first..fontname("Arial")
+Gui.frm_kpi_setup_first..fontsize(8)
+Gui.frm_kpi_setup_first..forecolor(0)
+Gui.frm_kpi_setup_first..BackColor(-2147483633)
+Gui.frm_kpi_setup_first..controlbox(True)
+Gui.frm_kpi_setup_first..maxbutton(True)
+Gui.frm_kpi_setup_first..minbutton(True)
+Gui.frm_kpi_setup_first..mousepointer(0)
+Gui.frm_kpi_setup_first..moveable(True)
+Gui.frm_kpi_setup_first..sizeable(True)
+Gui.frm_kpi_setup_first..ShowInTaskBar(True)
+Gui.frm_kpi_setup_first..titlebar(True)
+Gui.frm_kpi_setup_first.cmdFirstSetup.create(button)
+Gui.frm_kpi_setup_first.cmdFirstSetup.caption("Install KPI for Company")
+Gui.frm_kpi_setup_first.cmdFirstSetup.visible(True)
+Gui.frm_kpi_setup_first.cmdFirstSetup.size(2910,375)
+Gui.frm_kpi_setup_first.cmdFirstSetup.zorder(0)
+Gui.frm_kpi_setup_first.cmdFirstSetup.position(3000,405)
+Gui.frm_kpi_setup_first.cmdFirstSetup.enabled(True)
+Gui.frm_kpi_setup_first.cmdFirstSetup.fontname("Arial")
+Gui.frm_kpi_setup_first.cmdFirstSetup.fontsize(8)
+Gui.frm_kpi_setup_first.cmdFirstSetup.defaultvalue("")
+Gui.frm_kpi_setup_first.cmdFirstSetup.controlgroup(0)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Variable.UDT.gl_upload.Define("DESCR",String,DESCR)
+Variable.UDT.gl_upload.Define("GL_ACCOUNT",String,GL_ACCOUNT)
+Variable.uGlobal.gl_upload.Declare("gl_upload")
+V.Global.lCount.Declare(Long)
+Variable.UDT.gl_accounts.Define("GL_ACCOUNT",String, GL_ACCOUNT)
+Variable.UDT.gl_accounts.Define("ACCOUNT_TYPE",String, ACCOUNT_TYPE)
+Variable.UDT.gl_accounts.Define("ID",Long,ID)
+Variable.uGlobal.gl_accounts.Declare("gl_accounts")
+V.Global.bFirstTime.Declare(Boolean, false)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.squery.Declare(String)
+V.Local.sText.Declare(String)
+V.Local.bExists.Declare(boolean)
+V.Local.dDate.Declare(date)
+V.Local.iYear.Declare(long)
+V.Local.iFiscal.Declare(long)
+
+'Check liscense file for KPI: True
+F.Global.General.IsLicensedByModuleName("KPI", V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists, =, false)
+	F.Intrinsic.UI.Msgbox("You are not licensed to use this software. Please consult Global Shop Solutions for more information.")
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndIf
+
+'Check for CON_KPI_APOPEN
+F.ODBC.connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass,6000)
+F.ODBC.connection!conx.TableExists("CON_KPI_APOPEN", V.Local.bExists)
+
+F.Intrinsic.Control.If(V.Local.bExists, =, true)
+	F.Intrinsic.Control.CallSub(createExcelFile)
+	F.Intrinsic.Control.CallSub(sub_glxref)
+	F.Intrinsic.Control.CallSub(setupformcontrols)
+	Gui.frm_kpi_setup..Show
+
+	F.ODBC.connection!conx.OpenRecordsetRO("rsCount","SELECT COUNT(ID) AS MYROWS FROM CON_KPI_GL_ACCOUNTS")
+	V.Global.lCount.Set(V.ODBC.conx!rsCount.fieldvaltrim!MYROWS)
+	F.ODBC.conx!rsCount.Close
+	F.Intrinsic.Math.Add(V.Global.lCount,1,V.Global.lCount)
+
+	'Make sure CON_KPI_SETUP exists before continuing
+	F.ODBC.connection!conx.TableExists("CON_KPI_SETUP", V.Local.bExists)
+	F.Intrinsic.Control.If(V.Local.bExists, =, false)
+		F.Intrinsic.Control.CallSub(tablesdontexist)
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.String.Concat("SELECT * FROM CON_KPI_SETUP","",V.Local.squery)
+	F.ODBC.connection!conx.OpenLocalRecordsetRW("rstSetup",V.Local.squery)
+
+	F.Intrinsic.Control.If(V.ODBC.conx!rstSetup.EOF,=,False)
+		Gui.frm_kpi_setup.txt_months_back.Text(V.ODBC.conx!rstSetup.FieldValTrim!MONTHS_BACK)
+		Gui.frm_kpi_setup.txtOverhead.Text(V.ODBC.conx!rstSetup.FieldVal!OH)
+		Gui.frm_kpi_setup.txt_budget.TEXT(V.ODBC.conx!rstSetup.FieldVal!BUDGET)
+		Gui.frm_kpi_setup.chk_all_data.Value(V.ODBC.conx!rstSetup.FieldValTrim!ALL_MONTHS)
+		Gui.frm_kpi_setup.chkDashboardRunning.Value(V.ODBC.conx!rstSetup.FieldValTrim!DASHBOARD)
+
+		F.Intrinsic.Math.Sub(V.ODBC.conx!rstSetup.FieldVal!FISCAL_START, 1, V.Local.iFiscal)
+		Gui.frm_kpi_setup.ddlFiscal.ListIndex(V.Local.iFiscal)
+
+		Gui.frm_kpi_setup.txtCurrentYear.Text(V.ODBC.conx!rstSetup.FieldVal!CURRENT_YEAR)
+		Gui.frm_kpi_setup.txtPreviousYear.Text(V.ODBC.conx!rstSetup.FieldVal!PREVIOUS_YEAR)
+		Gui.frm_kpi_setup.dtpRefresh.Value(V.ODBC.conx!rstSetup.FieldVal!REFRESH_DATE)
+	F.Intrinsic.Control.Else
+		V.Global.bFirstTime.Set(True)
+		Gui.frm_kpi_setup.txt_months_back.Text("36")
+		Gui.frm_kpi_setup.txtOverhead.Text("0.05")
+		Gui.frm_kpi_setup.txt_budget.TEXT("1.05")
+		Gui.frm_kpi_setup.chk_all_data.Value(true)
+		Gui.frm_kpi_setup.chkDashboardRunning.Value(false)
+		Gui.frm_kpi_setup.ddlFiscal.ListIndex(0)
+
+		'get current year
+		F.Intrinsic.Date.Year(V.Ambient.Date, V.Local.iYear)
+		Gui.frm_kpi_setup.txtCurrentYear.Text(V.Local.iYear)
+
+		'get previous year
+		F.Intrinsic.Date.DateAdd("YYYY", -1, V.Ambient.Date, V.Local.dDate)
+		F.Intrinsic.Date.Year(V.Local.dDate, V.Local.iYear)
+		Gui.frm_kpi_setup.txtPreviousYear.Text(V.Local.iYear)
+
+		'get last month
+		F.Intrinsic.Date.DateAdd("M", -1, V.Ambient.Date, V.Local.dDate)
+		Gui.frm_kpi_setup.dtpRefresh.Value(V.Local.dDate)
+
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.CallSub(Getaccounts)
+	F.Intrinsic.Control.CallSub(Getcustomers)
+	F.Intrinsic.Control.CallSub(Getbudgettotal)
+
+	F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!chk_all_data.Value,=,1)
+		Gui.frm_kpi_setup.txt_months_back.Enabled(False)
+		Gui.frm_kpi_setup.lbl_months_back.Enabled(False)
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!chkSnapshot.Value,=,0)
+		Gui.frm_kpi_setup.dtpRefresh.Enabled(False)
+		Gui.frm_kpi_setup.dtpRefresh.Enabled(False)
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.CallSub(tablesdontexist)
+	F.ODBC.connection!conx.Close
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: CON_KPI_SETUP.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Main.End
+
+Program.Sub.CreateExcelFile.Start
+F.Intrinsic.Control.SetErrorHandler("CreateExcelFile_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.bExists.Declare(boolean)
+V.Local.sNewFileSuffix.Declare(string)
+V.Local.sKPIFile.Declare(string)
+V.Local.snewkpifile.Declare(string)
+
+'Create KPI File
+F.Intrinsic.String.Build("{0}\KPI-CCC.xlsm",V.Caller.FilesDir, V.Local.skpifile)
+F.Intrinsic.String.Build("KPI-{0}.xlsm",V.Caller.CompanyCode, V.Local.snewfilesuffix)
+F.Intrinsic.String.Build("{0}\{1}",V.Caller.FilesDir, V.Local.sNewFileSuffix, V.Local.snewkpifile)
+
+'if file does not exist, create it
+F.Intrinsic.File.Exists(V.Local.snewkpifile, V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists, =, False)
+	F.Intrinsic.File.CopyFile(V.Local.sKPIFile,V.Local.snewkpifile)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CreateExcelFile_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: CON_KPI_SETUP.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.CreateExcelFile.End
+
+Program.Sub.TablesDontExist.Start
+F.Intrinsic.UI.Msgbox("KPI Tables do not exist. Please make sure you are on Global Shop Version 2016.2 or higher.")
+F.Intrinsic.Control.End
+
+Program.Sub.TablesDontExist.End
+
+Program.Sub.SetupFormControls.Start
+Gui.frm_kpi_setup.gsfgAccounts.Cols(4)
+Gui.frm_kpi_setup.gsfgAccounts.Rows(1)
+Gui.frm_kpi_setup.gsfgAccounts.FixedRows(1)
+Gui.frm_kpi_setup.gsfgAccounts.TextMatrix(0,0,"Account")
+Gui.frm_kpi_setup.gsfgAccounts.TextMatrix(1,0,"Description")
+Gui.frm_kpi_setup.gsfgAccounts.TextMatrix(2,0,"Type")
+Gui.frm_kpi_setup.gsfgAccounts.TextMatrix(3,0,"Delete")
+Gui.frm_kpi_setup.gsfgAccounts.SetColumnPercentages(".18:.50:.21:.11")
+
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,0,"Type","Locked","True")
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,0,"Format","Alignment",2)
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,1,"Type","Locked","True")
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,1,"Format","Alignment",2)
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,2,"Type","Locked","True")
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,2,"Format","Alignment",2)
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,3,"Format","Alignment",4)
+Gui.frm_kpi_setup.gsfgAccounts.BuildStyle(2,3,"Type","Command","Delete")
+
+Gui.frm_kpi_setup.gsfgAccounts.ApplyStyle(1,2)
+
+Gui.frm_kpi_setup.gsfgCustomers.Cols(7)
+Gui.frm_kpi_setup.gsfgCustomers.Rows(2)
+Gui.frm_kpi_setup.gsfgCustomers.FixedRows(1)
+Gui.frm_kpi_setup.gsfgCustomers.TextMatrix(0,0,"Customer #")
+Gui.frm_kpi_setup.gsfgCustomers.TextMatrix(1,0,"Customer Name")
+Gui.frm_kpi_setup.gsfgCustomers.TextMatrix(2,0,"Top 10")
+Gui.frm_kpi_setup.gsfgCustomers.TextMatrix(3,0,"Rising")
+Gui.frm_kpi_setup.gsfgCustomers.TextMatrix(4,0,"Target")
+Gui.frm_kpi_setup.gsfgCustomers.TextMatrix(5,0,"Other")
+Gui.frm_kpi_setup.gsfgCustomers.TextMatrix(6,0,"Budget")
+Gui.frm_kpi_setup.gsfgCustomers.SetColumnPercentages(".09:.40:.09:.09:.09:.09:.14")
+
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,0,"Type","Locked","True")
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,0,"Format","Alignment",2)
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,1,"Type","Locked","True")
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,1,"Format","Alignment",2)
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,2,"Type","Checkbox","True")
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,3,"Type","Checkbox","True")
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,4,"Type","Checkbox","True")
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,5,"Type","Checkbox","True")
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,6,"Format","Alignment",8)
+Gui.frm_kpi_setup.gsfgCustomers.BuildStyle(3,6,"Format","Numeric","False")
+Gui.frm_kpi_setup.gsfgCustomers.ApplyStyle(1,3)
+
+
+Gui.frm_kpi_setup.ddlAccountType.AddItem("",0)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Accounts Payable",1)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Accounts Receivable",2)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Cash",3)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Cost of Goods Sold - Freight",4)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Cost of Goods Sold - Labor",5)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Cost of Goods Sold - Outside",6)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Cost of Goods Sold - Overhead",7)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Cost of Goods Sold - Other",8)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Cost of Goods Sold - Material",9)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Equity",10)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Inventory - Finished Good",11)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Inventory - Raw Material",12)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Inventory - Work In Progress",13)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Fixed Assets",14)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Fixed Expenses",15)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Long-Term Debt",16)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Other Current Assets",17)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Other Current Liabilities",18)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Revenue",19)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Shares",20)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Taxes",21)
+Gui.frm_kpi_setup.ddlAccountType.AddItem("Variable Expenses",22)
+
+Gui.frm_kpi_setup.ddlFiscal.AddItem("January", 0)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("February", 1)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("March", 2)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("April", 3)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("May", 4)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("June", 5)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("July", 6)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("August", 7)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("September", 8)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("October", 9)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("November", 10)
+Gui.frm_kpi_setup.ddlFiscal.AddItem("December", 11)
+Program.Sub.SetupFormControls.End
+
+Program.Sub.frm_kpi_setup_unload.Start
+F.Intrinsic.Control.SetErrorHandler("frm_kpi_setup_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSetup.Declare(string)
+V.Local.sQuery.Declare(string, "SELECT COUNT(1) FROM CON_KPI_SETUP")
+V.Local.iCount.Declare(long)
+
+F.Intrinsic.Control.If(V.Global.bFirstTime)
+	F.ODBC.Connection!conx.ExecuteAndReturn(V.Local.sQuery, V.Local.iCount)
+	F.Intrinsic.Control.If(V.Local.iCount, >, 0)
+		Gui.frm_kpi_setup..Visible(false)
+		F.Intrinsic.String.Concat(V.Caller.GasDir,"\CON_KPI_Build.g2u",V.Local.sSetup)
+		F.Global.General.CallSyncGAS(V.Local.ssetup)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("If you exit without saving any KPI Settings, you will have to run setup again before running KPI Build.{0}{1} Would you like to exit anyways?", V.Ambient.NewLine, V.Ambient.NewLine, V.Local.sError)
+		F.Intrinsic.UI.MsgBox(V.Local.sError, "Exit without Saving", 4, V.Local.iCount)
+		F.Intrinsic.Control.If(V.Local.iCount, =, 7)
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.ODBC.connection!conx.Close
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("frm_kpi_setup_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: CON_KPI_SETUP.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.frm_kpi_setup_unload.End
+
+Program.Sub.cmd_setup_save_click.Start
+F.Intrinsic.Control.SetErrorHandler("cmd_setup_save_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.squery.Declare(String)
+V.Local.iMonth.Declare(long)
+
+F.Intrinsic.String.Concat("SELECT * FROM CON_KPI_SETUP","",V.Local.squery)
+F.ODBC.connection!conx.OpenLocalRecordsetRW("rstSetup",V.Local.squery)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rstSetup.EOF,=,True)
+	F.ODBC.conx!rstSetup.AddNew
+F.Intrinsic.Control.EndIf
+
+F.ODBC.conx!rstSetup.Set!BUDGET(V.Screen.frm_kpi_setup!txt_budget.Text)
+F.ODBC.conx!rstSetup.Set!MONTHS_BACK(V.Screen.frm_kpi_setup!txt_months_back.Text)
+F.ODBC.conx!rstSetup.Set!ALL_MONTHS(V.Screen.frm_kpi_setup!chk_all_data.Value)
+F.ODBC.conx!rstSetup.Set!OH(V.Screen.frm_kpi_setup!TXTOverhead.Text)
+F.ODBC.conx!rstSetup.Set!CC(V.Caller.CompanyCode)
+F.ODBC.conx!rstSetup.Set!DASHBOARD(V.Screen.frm_kpi_setup!chkDashboardRunning.Value)
+F.ODBC.conx!rstSetup.Set!REFRESH(V.Screen.frm_kpi_setup!chkSnapshot.Value)
+F.ODBC.conx!rstSetup.Set!REFRESH_DATE(V.Screen.frm_kpi_setup!dtpRefresh.Value)
+
+F.Intrinsic.Math.Add(V.Screen.frm_kpi_setup!ddlFiscal.ListIndex, 1, V.Local.iMonth)
+F.ODBC.conx!rstSetup.Set!FISCAL_START(V.Local.iMonth)
+
+F.ODBC.conx!rstSetup.Set!CURRENT_YEAR(V.Screen.frm_kpi_setup!txtCurrentYear.Text)
+F.ODBC.conx!rstSetup.Set!PREVIOUS_YEAR(V.Screen.frm_kpi_setup!txtPreviousYear.Text)
+F.ODBC.conx!rstSetup.Update
+
+F.Intrinsic.UI.Msgbox("Saved")
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_setup_save_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	F.Intrinsic.UI.Msgbox("Could not save setup, make sure all required fields are not empty")
+	F.Intrinsic.Control.ExitSub
+Function.Intrinsic.Control.EndIf
+Program.Sub.cmd_setup_save_click.End
+
+Program.Sub.chk_all_data_click.Start
+F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!chk_all_data.Value,=,1)
+	Gui.frm_kpi_setup.txt_months_back.Enabled(False)
+	Gui.frm_kpi_setup.lbl_months_back.Enabled(False)
+F.Intrinsic.Control.Else
+	Gui.frm_kpi_setup.txt_months_back.Enabled(True)
+	Gui.frm_kpi_setup.lbl_months_back.Enabled(True)
+F.Intrinsic.Control.EndIf
+Program.Sub.chk_all_data_click.End
+
+Program.Sub.cmdadd_click.Start
+V.Local.squery.Declare(String)
+V.Local.sDescr.Declare(string)
+
+F.Intrinsic.String.Concat("SELECT * FROM CON_KPI_GL_ACCOUNTS WHERE GL_ACCOUNT='",V.Screen.frm_kpi_setup!txtGLAccount.Text,"' AND ACCOUNT_TYPE='",V.Screen.frm_kpi_setup!ddlAccountType.Text,"'",V.Local.squery)
+F.ODBC.Connection!conx.openrecordsetro("rsVerify",V.Local.squery)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rsVerify.EOF,=,False)
+	F.Intrinsic.UI.Msgbox("Record exists!")
+F.Intrinsic.Control.Else
+	F.ODBC.Connection!conx.OpenRecordsetRW("rsAcct","SELECT * FROM CON_KPI_GL_ACCOUNTS")
+	F.ODBC.conx!rsAcct.AddNew
+	F.ODBC.conx!rsAcct.Set!GL_ACCOUNT(V.Screen.frm_kpi_setup!txtGLAccount.Text)
+	F.odbc.conx!rsAcct.Set!ACCOUNT_TYPE(V.Screen.frm_kpi_setup!ddlAccountType.Text)
+
+	'Get Descr from GL_ACCOUNT
+	F.Intrinsic.String.Build("SELECT DESCR FROM GL_MASTER WHERE GL_ACCOUNT='{0}'",V.Screen.frm_kpi_setup!txtGLAccount.Text,V.Local.squery)
+	F.ODBC.connection!conx.ExecuteAndReturn(V.Local.squery, V.Local.sDescr)
+	F.ODBC.conx!rsAcct.Set!DESCRIPTION(V.Local.sDescr)
+	F.ODBC.conx!rsAcct.Update
+	F.ODBC.conx!rsAcct.Close
+	F.Intrinsic.Control.CallSub(Getaccounts)
+F.Intrinsic.Control.EndIf
+F.ODBC.Conx!rsVerify.Close
+
+Program.Sub.cmdadd_click.End
+
+Program.Sub.getAccounts.Start
+V.Local.irowCount.Declare(long)
+V.Local.i.Declare(long)
+
+'Load Recordset into Flex Grid
+F.ODBC.connection!conx.OpenRecordsetRO("rsAccts","Select GL_ACCOUNT, ISNULL(DESCRIPTION, ''), ISNULL(ACCOUNT_TYPE, 'No Type Found'), ISNULL(DELETE_TEXT, 'Delete') from CON_KPI_GL_ACCOUNTS ORDER BY ID")
+F.Intrinsic.Control.If(V.ODBC.conx!rsAccts.EOF, =, false)
+	Gui.frm_kpi_setup.gsfgAccounts.LoadRecordset("Conx!rsAccts", 2)
+F.Intrinsic.Control.EndIf
+F.ODBC.Conx!rsAccts.Close
+
+'Delete extra Row
+F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!gsfgAccounts.Rows, >, 1)
+	F.Intrinsic.Math.Sub(V.Screen.frm_kpi_setup!gsfgAccounts.Rows, 1, V.Local.irowCount)
+	Gui.frm_kpi_setup.gsfgAccounts.DeleteRow(V.Local.irowCount)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.For(V.Local.i, 0, V.Local.irowCount, 1)
+	Gui.frm_kpi_setup.gsfgAccounts.ApplyStyle(V.Local.i, 2)
+F.Intrinsic.Control.Next(V.Local.i)
+
+
+Program.Sub.getAccounts.End
+
+Program.Sub.gsfgaccounts_cellenter.Start
+V.Local.squery.Declare(String)
+V.Local.lvalue.Declare(Long)
+V.Local.sGLAccount.Declare(String)
+V.Local.sAccountType.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!gsfgAccounts.Rows, >, 1)
+	F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!gsfgAccounts.Col,=,3)
+		Gui.frm_kpi_setup.gsfgAccounts.GetTextMatrix(0,V.Screen.frm_kpi_setup!gsfgAccounts.Row,V.Local.sGLAccount)
+		Gui.frm_kpi_setup.gsfgAccounts.GetTextMatrix(2,V.Screen.frm_kpi_setup!gsfgAccounts.Row,V.Local.sAccountType)
+		F.Intrinsic.Control.If(V.Local.sAccountType, =, "No Type Found", OR, V.Local.sAccountType, =, "")
+			F.Intrinsic.String.Build("DELETE FROM CON_KPI_GL_ACCOUNTS WHERE GL_ACCOUNT='{0}' AND ACCOUNT_TYPE is NULL",V.Local.sGLAccount,V.Local.sAccountType,V.local.squery)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Build("DELETE FROM CON_KPI_GL_ACCOUNTS WHERE GL_ACCOUNT='{0}' AND ACCOUNT_TYPE='{1}'",V.Local.sGLAccount,V.Local.sAccountType,V.local.squery)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.connection!conx.Execute(V.Local.squery)
+		gui.frm_kpi_setup.gsfgAccounts.deleterow(v.Screen.frm_kpi_setup!gsfgAccounts.Row)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+Program.Sub.gsfgaccounts_cellenter.End
+
+Program.Sub.cmdbrowse_click.Start
+V.Local.sTitles.Declare(String)
+V.Local.iWidths.Declare(Long)
+V.local.sRet.Declare(String)
+V.Local.stemp.declare(String)
+
+ Function.intrinsic.string.split("GL Account*!*GL Description","*!*",Variable.local.sTitles)
+ Function.intrinsic.string.split("1000*!*3000","*!*",Variable.local.iWidths)
+
+ Function.intrinsic.ui.browser("Select a GL Account",conx,"Select GL_ACCOUNT, DESCR From V_GL_MASTER ORDER BY GL_ACCOUNT",Variable.local.sTitles,Variable.local.iWidths,Variable.local.sRet)
+
+ Function.intrinsic.control.if(Variable.local.sRet,"<>","***CANCEL***")
+ 		Function.intrinsic.string.split(Variable.local.sRet,"*!*",Variable.local.sRet)
+		V.Local.stemp.Set(V.Local.sRet(0))
+		Gui.frm_kpi_setup.txtGLAccount.Text(V.Local.stemp)
+ Function.intrinsic.control.endif
+
+Program.Sub.cmdbrowse_click.End
+
+Program.Sub.getCustomers.Start
+V.Local.squery.Declare(String)
+F.Intrinsic.String.Build("SELECT Customer,Name_customer,isnull(Top10,0),isnull(RisingStar,0),isnull(Target,0),isnull(Other,0),isnull(Budget,{0}) FROM V_CUSTOMER_MASTER TB1 LEFT JOIN CON_KPI_CUSTOMER TB2 ON TB1.CUSTOMER=TB2.CUSTOMER ORDER BY TB1.NAME_CUSTOMER",V.Screen.frm_kpi_setup!txt_budget.Text,V.Local.squery)
+F.ODBC.connection!conx.OpenLocalRecordsetRO("rsCust",V.Local.squery)
+Gui.frm_kpi_setup.gsfgCustomers.Visible(false)
+Gui.frm_kpi_setup.gsfgCustomers.LoadRecordset("Conx!rsCust",3)
+Gui.frm_kpi_setup.gsfgCustomers.Visible(true)
+F.ODBC.Conx!rsCust.Close
+
+Program.Sub.getCustomers.End
+
+Program.Sub.gsfgcustomers_cellexit.Start
+F.Intrinsic.Control.CallSub(Setcustomergrid)
+F.Intrinsic.Control.CallSub(Getbudgettotal)
+
+Program.Sub.gsfgcustomers_cellexit.End
+
+Program.Sub.getBudgetTotal.Start
+V.Local.sReturn.Declare(String)
+V.Local.freturn.Declare(Float)
+F.ODBC.connection!conx.ExecuteAndReturn("select IFNULL(sum(budget),0) as total from CON_KPI_CUSTOMER",V.Local.freturn)
+F.Intrinsic.String.Format(V.Local.freturn,"###,###,###,###,###,###,###,###,###.##",V.Local.sReturn)
+Gui.frm_kpi_setup.lblTotalBudget.Caption(V.Local.sReturn)
+
+
+Program.Sub.getBudgetTotal.End
+
+Program.Sub.setCustomerGrid.Start
+V.Local.squery.Declare(String)
+V.Local.lvalue.Declare(Long)
+V.Local.lTop10.Declare(Long)
+V.Local.lRising.Declare(Long)
+V.Local.lTarget.Declare(Long)
+V.Local.lOther.Declare(Long)
+V.Local.bValue.Declare(boolean)
+
+V.Local.sCustomer.Declare(String)
+V.Local.sCustomerName.Declare(String)
+V.Local.FBudget.Declare(Float)
+Gui.frm_kpi_setup.gsfgCustomers.Commit
+V.Local.sret.Declare(String)
+F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!gsfgCustomers.Col,>=,2)
+	Gui.frm_kpi_setup.gsfgCustomers.GetTextMatrix(0,V.Screen.frm_kpi_setup!gsfgCustomers.Row,V.Local.sCustomer)
+	Gui.frm_kpi_setup.gsfgCustomers.GetTextMatrix(1,V.Screen.frm_kpi_setup!gsfgCustomers.Row,V.Local.sCustomerName)
+
+	Gui.frm_kpi_setup.gsfgCustomers.GetTextMatrix(2,V.Screen.frm_kpi_setup!gsfgCustomers.Row,V.Local.bValue)
+	F.Intrinsic.Control.If(V.Local.bValue)
+		V.Local.lTop10.Set(1)
+	F.Intrinsic.Control.Else
+		V.Local.lTop10.Set(0)
+	F.Intrinsic.Control.EndIf
+
+	Gui.frm_kpi_setup.gsfgCustomers.GetTextMatrix(3,V.Screen.frm_kpi_setup!gsfgCustomers.Row,V.Local.bValue)
+	F.Intrinsic.Control.If(V.Local.bValue)
+		V.Local.lRising.Set(1)
+	F.Intrinsic.Control.Else
+		V.Local.lRising.Set(0)
+	F.Intrinsic.Control.EndIf
+
+	Gui.frm_kpi_setup.gsfgCustomers.GetTextMatrix(4,V.Screen.frm_kpi_setup!gsfgCustomers.Row,V.Local.bValue)
+	F.Intrinsic.Control.If(V.Local.bValue)
+		V.Local.lTarget.Set(1)
+	F.Intrinsic.Control.Else
+		V.Local.lTarget.Set(0)
+	F.Intrinsic.Control.EndIf
+
+	Gui.frm_kpi_setup.gsfgCustomers.GetTextMatrix(5,V.Screen.frm_kpi_setup!gsfgCustomers.Row,V.Local.bValue)
+	F.Intrinsic.Control.If(V.Local.bValue)
+		V.Local.lOther.Set(1)
+	F.Intrinsic.Control.Else
+		V.Local.lOther.Set(0)
+	F.Intrinsic.Control.EndIf
+
+	Gui.frm_kpi_setup.gsfgCustomers.GetTextMatrix(6,V.Screen.frm_kpi_setup!gsfgCustomers.Row,V.Local.Fbudget)
+
+	F.Intrinsic.Control.If(V.Local.sCustomer,<>,"")
+		F.Intrinsic.String.Concat("SELECT CUSTOMER FROM CON_KPI_CUSTOMER WHERE CUSTOMER='",V.Local.sCustomer,"'",V.Local.squery)
+		F.ODBC.connection!conx.ExecuteAndReturn(V.Local.squery,V.Local.sret)
+		F.Intrinsic.String.Trim(V.Local.sret,V.Local.sret)
+		F.Intrinsic.Control.If(V.Local.sret,=,"")
+			F.Intrinsic.String.Concat("INSERT INTO CON_KPI_CUSTOMER (CUSTOMER,BUDGET,Top10,RisingStar,Target,Other) VALUES('",V.Local.sCustomer,"' ,",V.Local.fBudget,",",V.Local.ltop10,",",V.Local.lRising,",",V.Local.lTarget,",",V.Local.LOther,")",V.Local.squery)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Concat("UPDATE CON_KPI_CUSTOMER SET BUDGET='",V.Local.FBudget,"', TOP10=",V.local.ltop10,", RISINGSTAR=",V.local.lRising,", TARGET=",V.local.lTarget,", OTHER=",V.local.lOther," WHERE CUSTOMER='",V.Local.sCustomer,"'",V.Local.squery)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.connection!conx.Execute(V.Local.squery)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+Program.Sub.setCustomerGrid.End
+
+Program.Sub.gsfgcustomers_checkclick.Start
+F.Intrinsic.Control.CallSub(Setcustomergrid)
+
+Program.Sub.gsfgcustomers_checkclick.End
+
+Program.Sub.sub_uploadgl.Start
+F.Intrinsic.Control.SetErrorHandler("sub_uploadgl_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.bret.Declare(Boolean)
+V.Local.sArray.Declare(String)
+V.Local.sRow.Declare(String)
+V.Local.sColumn.Declare(String)
+V.Local.sFolder.Declare(String)
+V.Local.icount.Declare(Long)
+V.Local.ubound.Declare(Long)
+V.Local.sSQL.Declare(string)
+
+
+V.uGlobal.gl_upload.Redim(-1,-1)
+
+F.Intrinsic.UI.InvokeWaitDialog("Uploading gl accounts, please wait.")
+F.ODBC.Connection!conx.Execute("DELETE FROM CON_KPI_GL_ACCOUNTS")
+
+F.Automation.MSExcel.CheckPresence(V.Local.bret)
+
+F.Intrinsic.Control.If(V.Local.bret,=,False)
+
+	F.Intrinsic.UI.Msgbox("The program could not find MS EXCEL and will terminate")
+
+F.Intrinsic.Control.Else
+
+	F.Intrinsic.UI.ShowOpenFileDialog("","*.xls",V.Caller.FilesDir,V.Local.sFolder)
+	F.Intrinsic.Control.If(V.Local.sFolder, <>, "***CANCEL***")
+		F.Automation.MSExcel.ReadSpreadsheet(V.Local.sFolder,V.Local.sArray)
+		F.Intrinsic.String.Split(V.Local.sArray,"&^&",V.Local.sRow)
+		F.Intrinsic.String.Split(V.Local.sRow,"$!$",V.Local.sRow)
+		F.Intrinsic.Control.For(V.Local.icount,1,V.Local.sRow.UBound,1)
+
+			F.Intrinsic.String.Split(V.Local.sRow(v.Local.icount),"*!*",V.Local.sColumn)
+			
+			F.Intrinsic.String.Build("INSERT INTO CON_KPI_GL_ACCOUNTS VALUES ({0}, '{1}', '{2}', '{3}', 'DELETE')", V.Local.icount, V.Local.sColumn(0), V.Local.sColumn(2), V.Local.sColumn(1), V.Local.sSQL)
+			F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+			
+		F.Intrinsic.Control.Next(V.Local.icount)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'F.Intrinsic.Control.CallSub(Sub_glupdate)
+F.Intrinsic.Control.CallSub(Getaccounts)
+F.Intrinsic.UI.CloseWaitDialog
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("sub_uploadgl_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: CON_KPI_SETUP.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.sub_uploadgl.End
+
+Program.Sub.sub_glxref.Start
+V.Local.sSQL.Declare(String)
+V.Local.sPath.Declare(String)
+V.Local.sText.Declare(String)
+V.Local.iCount.Declare(long)
+
+'Check for CON_KPI_XREF
+F.ODBC.connection!conx.ExecuteAndReturn("SELECT COUNT(1) FROM CON_KPI_XREF", V.Local.iCount)
+
+'Add values to CON_KPI_XREF
+F.Intrinsic.Control.If(V.Local.iCount, <, 1)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('1','Accounts Payable')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('2','Accounts Receivable')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('3','Cash')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('4','Cost of Goods Sold - Freight')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('5','Cost of Goods Sold - Labor')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('6','Cost of Goods Sold - Outside')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('7','Cost of Goods Sold - Overhead')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('8','Cost of Goods Sold - Other')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('9','Cost of Goods Sold - Material')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('10','Equity')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('11','Inventory - Finished Good')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('12','Inventory - Raw Material')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('13','Inventory - Work In Progress')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('14','Fixed Assets')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('15','Fixed Expenses')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('16','Long-Term Debt')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('17','Other Current Assets')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('18','Other Current Liabilities')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('19','Revenue')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('20','Shares')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('21','Taxes')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+	F.Intrinsic.String.Concat("INSERT INTO CON_KPI_XREF (DESCR_ID,DESCR) VALUES ('22','Variable Expenses')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+
+F.Intrinsic.Control.EndIf
+
+
+Program.Sub.sub_glxref.End
+
+Program.Sub.sub_glupdate.Start
+V.Local.sSQL.Declare(String)
+
+F.Intrinsic.UI.InvokeWaitDialog("Updating Tables","Update")
+
+V.Local.sSQL.Set("INSERT INTO CON_KPI_GL_ACCOUNTS (GL_ACCOUNT,ACCOUNT_TYPE) SELECT GL_ACCOUNT,DESCR FROM CON_KPI_GL_UPLOAD")
+F.ODBC.connection!conx.Execute(V.Local.sSQL)
+
+V.Local.sSQL.Set("UPDATE CON_KPI_GL_ACCOUNTS SET ACCOUNT_TYPE = (SELECT DESCR FROM GL_MASTER WHERE CON_KPI_GL_ACCOUNTS.GL_ACCOUNT = GL_MASTER.GL_ACCOUNT)")
+F.ODBC.connection!conx.Execute(V.Local.sSQL)
+
+F.Intrinsic.UI.CloseWaitDialog
+
+
+Program.Sub.sub_glupdate.End
+
+Program.Sub.cmdcreatenewbudget_click.Start
+V.Local.lret.Declare(Long)
+F.Intrinsic.UI.Msgbox("Creating a new budget will delete your current values and replace them with the sum of invoice extensions for that customer times your multiplier.  Are you sure?","Budget Update",4,V.Local.lRet)
+F.Intrinsic.Control.If(V.Local.lret,=,6)
+	F.Intrinsic.UI.InvokeWaitDialog("Creating budgets, please wait.")
+	V.Local.sSQL.Declare(String)
+	V.Local.sDate1.Declare(String)
+	V.Local.sDate2.Declare(String)
+	V.Local.sPercent.Declare(String)
+
+
+	f.Intrinsic.Date.DateAdd(D,-1,v.Ambient.Date,v.Local.sDate2)
+	f.Intrinsic.Date.DateAdd(YYYY,-1,v.Ambient.Date,v.Local.sDate1)
+
+	F.Intrinsic.String.Format(V.Local.sDate1,"YYYY-MM-DD",V.Local.sDate1)
+	F.Intrinsic.String.Format(V.Local.sDate2,"YYYY-MM-DD",V.Local.sDate2)
+
+	V.Local.sPercent.Set(V.Screen.frm_kpi_setup!txt_budget.Text)
+
+	F.Intrinsic.String.Concat("UPDATE CON_KPI_CUSTOMER SET BUDGET = (SELECT SUM(EXTENSION) FROM V_ORDER_HIST_LINE WHERE CON_KPI_CUSTOMER.CUSTOMER=V_ORDER_HIST_LINE.CUSTOMER AND DATE_INVOICE BETWEEN '",V.Local.sDate1,"' AND '",V.Local.sDate2,"')","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+
+	F.Intrinsic.String.Concat("UPDATE CON_KPI_CUSTOMER SET BUDGET = (BUDGET *",V.Local.sPercent,")","",V.Local.sSQL)
+	F.ODBC.connection!conx.Execute(V.Local.sSQL)
+
+
+	F.Intrinsic.Control.CallSub(Getcustomers)
+	F.Intrinsic.UI.CloseWaitDialog
+	F.Intrinsic.UI.Msgbox("Budgets created")
+F.Intrinsic.Control.EndIf
+
+Program.Sub.cmdcreatenewbudget_click.End
+
+Program.Sub.chkSnapshot_Click.Start
+F.Intrinsic.Control.If(V.Screen.frm_kpi_setup!chkSnapshot.Value,=,0)
+	Gui.frm_kpi_setup.dtpRefresh.Enabled(False)
+	Gui.frm_kpi_setup.dtpRefresh.Enabled(False)
+F.Intrinsic.Control.Else
+	Gui.frm_kpi_setup.dtpRefresh.Enabled(True)
+	Gui.frm_kpi_setup.dtpRefresh.Enabled(True)
+F.Intrinsic.Control.EndIf
+Program.Sub.chkSnapshot_Click.End
+
+Program.Sub.Comments.Start
+${$0$}$$}$$}$12:00:00 AM$}$False
+Program.Sub.Comments.End
