@@ -1,0 +1,251 @@
+Program.Sub.ScreenSU.Start
+gui.frm_kpi_data..create
+gui.frm_kpi_data..caption("KPI data collection... wait!")
+gui.frm_kpi_data..size(12000,1365)
+gui.frm_kpi_data..minx(0)
+gui.frm_kpi_data..miny(0)
+gui.frm_kpi_data..position(0,0)
+gui.frm_kpi_data..alwaysontop(False)
+gui.frm_kpi_data..fontname("Arial")
+gui.frm_kpi_data..fontsize(8)
+gui.frm_kpi_data..forecolor(0)
+gui.frm_kpi_data..fontstyle(,,,,)
+gui.frm_kpi_data..BackColor(-2147483633)
+gui.frm_kpi_data..controlbox(True)
+gui.frm_kpi_data..maxbutton(True)
+gui.frm_kpi_data..minbutton(True)
+gui.frm_kpi_data..mousepointer(0)
+gui.frm_kpi_data..moveable(True)
+gui.frm_kpi_data..sizeable(True)
+gui.frm_kpi_data..ShowInTaskBar(True)
+gui.frm_kpi_data..titlebar(True)
+gui.frm_kpi_data.prg_kpi_data.create(progressbar)
+gui.frm_kpi_data.prg_kpi_data.visible(True)
+gui.frm_kpi_data.prg_kpi_data.size(11310,255)
+gui.frm_kpi_data.prg_kpi_data.zorder(0)
+gui.frm_kpi_data.prg_kpi_data.position(200,200)
+gui.frm_kpi_data.prg_kpi_data.enabled(True)
+gui.frm_kpi_data.lblCaption.create(label,"",True,11235,255,1,200,500,True,0,Arial,8,-2147483633,0)
+gui.frm_kpi_data.lblCaption.defaultvalue("")
+gui.frm_kpi_data.lblCaption.controlgroup(0)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.External.Include.Library("CON_KPI_LIBRARY.lib")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iHwnd.Declare(Long)
+V.Local.sFilename.Declare(String)
+V.Local.stimeback.Declare(String)
+V.Local.sYearS.Declare(String)
+V.Local.sYearE.Declare(String)
+V.Local.sMonthS.Declare(String)
+V.Local.sMonthE.Declare(String)
+V.Local.stemp.Declare(String)
+V.Local.stempquery.Declare(String)
+V.Local.ftemp.Declare(String)
+V.Local.dtemp.declare(String)
+V.Local.smonth.Declare(String)
+V.Local.syear.Declare(String)
+V.Local.sPath.Declare(String)
+V.Local.iRet.Declare(long)
+
+F.Intrinsic.String.Concat("CON_KPI_BUILD",".gas","",V.Local.sFilename)
+
+F.Intrinsic.API.FindWindow(V.Local.sFilename,V.Local.iHwnd)
+
+F.Intrinsic.Control.If(V.Local.iHwnd,<>,0)
+	'FILE IS RUNNING
+
+F.Intrinsic.Control.Else
+	'FILE IS NOT RUNNING GO AHEAD AND RUN
+
+	V.Local.scc.Declare(String)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass,60000)
+
+	F.ODBC.Connection!con.ExecuteAndReturn("SELECT COUNT(1) FROM CON_KPI_SETUP", V.Local.iRet)
+	F.Intrinsic.Control.If(V.Local.iRet, <, 1)
+		F.Intrinsic.UI.Msgbox("Please run KPI Setup before running KPI Build")
+		F.ODBC.Connection!con.Close
+		F.Intrinsic.Control.End
+
+	F.Intrinsic.Control.EndIf
+
+	' Check to see if V_CON_KPI_CALENDAR exists
+	v.Local.bTemp.Declare(Boolean)
+	f.ODBC.Connection!con.TableExists("V_CON_KPI_CALENDAR",v.Local.bTemp)
+	Function.Intrinsic.Control.If(v.Local.bTemp,<>,True)
+		f.ODBC.Connection!con.Execute("CREATE VIEW V_CON_KPI_CALENDAR AS SELECT CON_KPI_CALENDAR .START_YEAR ,CON_KPI_CALENDAR .PERIOD ,IF (SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,1 ,4 )>= '1900' AND SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,1 ,4 )<= '2999' AND SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,5 ,2 )<= '12' AND SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,5 ,2 )>= '01' AND SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,7 ,2 )<= '31' AND SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,7 ,2 )>= '01' ,CONVERT (SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,1 ,4 )+'-' +SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,5 ,2 )+'-' +SUBSTRING (CON_KPI_CALENDAR .BEG_DATE ,7 ,2 ),SQL_DATE ),CONVERT ('1900-01-01' ,SQL_DATE ))BEG_DATE ,IF (SUBSTRING (CON_KPI_CALENDAR .END_DATE ,1 ,4 )>= '1900' AND SUBSTRING (CON_KPI_CALENDAR .END_DATE ,1 ,4 )<= '2999' AND SUBSTRING (CON_KPI_CALENDAR .END_DATE ,5 ,2 )<= '12' AND SUBSTRING (CON_KPI_CALENDAR .END_DATE ,5 ,2 )>= '01' AND SUBSTRING (CON_KPI_CALENDAR .END_DATE ,7 ,2 )<= '31' AND SUBSTRING (CON_KPI_CALENDAR .END_DATE ,7 ,2 )>= '01' ,CONVERT (SUBSTRING (CON_KPI_CALENDAR .END_DATE ,1 ,4 )+'-' +SUBSTRING (CON_KPI_CALENDAR .END_DATE ,5 ,2 )+'-' +SUBSTRING (CON_KPI_CALENDAR .END_DATE ,7 ,2 ),SQL_DATE ),CONVERT ('1900-01-01' ,SQL_DATE ))END_DATE ,CON_KPI_CALENDAR .TITLE ,CON_KPI_CALENDAR .CLOSE_AP ,CON_KPI_CALENDAR .CLOSE_AR ,CON_KPI_CALENDAR .CLOSE_GL ,CON_KPI_CALENDAR .CREATED ,IF (SUBSTRING (CON_KPI_CALENDAR .START_DATE ,1 ,4 )>= '1900' AND SUBSTRING (CON_KPI_CALENDAR .START_DATE ,1 ,4 )<= '2999' AND SUBSTRING (CON_KPI_CALENDAR .START_DATE ,5 ,2 )<= '12' AND SUBSTRING (CON_KPI_CALENDAR .START_DATE ,5 ,2 )>= '01' AND SUBSTRING (CON_KPI_CALENDAR .START_DATE ,7 ,2 )<= '31' AND SUBSTRING (CON_KPI_CALENDAR .START_DATE ,7 ,2 )>= '01' ,CONVERT (SUBSTRING (CON_KPI_CALENDAR .START_DATE ,1 ,4 )+'-' +SUBSTRING (CON_KPI_CALENDAR .START_DATE ,5 ,2 )+'-' +SUBSTRING (CON_KPI_CALENDAR .START_DATE ,7 ,2 ),SQL_DATE ),CONVERT ('1900-01-01' ,SQL_DATE ))START_DATE ,IF (SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,1 ,4 )>= '1900' AND SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,1 ,4 )<= '2999' AND SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,5 ,2 )<= '12' AND SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,5 ,2 )>= '01' AND SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,7 ,2 )<= '31' AND SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,7 ,2 )>= '01' ,CONVERT (SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,1 ,4 )+'-' +SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,5 ,2 )+'-' +SUBSTRING (CON_KPI_CALENDAR .COMP9_DATE ,7 ,2 ),SQL_DATE ),CONVERT ('1900-01-01' ,SQL_DATE ))COMP9_DATE ,IF (SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,1 ,4 )>= '1900' AND SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,1 ,4 )<= '2999' AND SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,5 ,2 )<= '12' AND SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,5 ,2 )>= '01' AND SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,7 ,2 )<= '31' AND SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,7 ,2 )>= '01' ,CONVERT (SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,1 ,4 )+'-' +SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,5 ,2 )+'-' +SUBSTRING (CON_KPI_CALENDAR .LAST_DATE_CHG ,7 ,2 ),SQL_DATE ),CONVERT ('1900-01-01' ,SQL_DATE ))LAST_DATE_CHG ,IF (CON_KPI_CALENDAR .LAST_TIME_CHG > '000000' AND SUBSTRING (CON_KPI_CALENDAR .LAST_TIME_CHG ,1 ,2 )<= '24' AND SUBSTRING (CON_KPI_CALENDAR .LAST_TIME_CHG ,3 ,2 )< '60' AND SUBSTRING (CON_KPI_CALENDAR .LAST_TIME_CHG ,5 ,2 )< '60' ,CONVERT (SUBSTRING (CON_KPI_CALENDAR .LAST_TIME_CHG ,1 ,2 )+':' +SUBSTRING (CON_KPI_CALENDAR .LAST_TIME_CHG ,3 ,2 )+':' +SUBSTRING (CON_KPI_CALENDAR .LAST_TIME_CHG ,5 ,2 ),SQL_TIME ),CONVERT ('00:00:00' ,SQL_TIME ))LAST_TIME_CHG ,CON_KPI_CALENDAR .LAST_USR_CHG ,CON_KPI_CALENDAR .LAST_PGM_CHG FROM CON_KPI_CALENDAR CON_KPI_CALENDAR;")
+	Function.Intrinsic.Control.EndIf
+
+	Gui.frm_kpi_data..Show
+	Gui.frm_kpi_data.prg_kpi_data.Visible(True)
+	F.Intrinsic.string.Concat("GLOBAL_",V.Caller.CompanyCode,V.Local.scc)
+
+	'Get Setup data
+	Gui.frm_kpi_data.prg_kpi_data.Value("5")
+	Gui.frm_kpi_data.lblCaption.Caption("Getting setup values")
+	F.ODBC.Connection!con.OpenRecordsetRO("rstSetup","SELECT * FROM CON_KPI_SETUP")
+
+	V.global.lMonth.Set(V.ODBC.con!rstSetup.FieldVal!FISCAL_START)
+
+	V.Local.sDashboard.Declare(String)
+	V.Local.sDashboard.Set(V.ODBC.con!rstSetup.FieldVal!DASHBOARD)
+
+	V.Local.stimeback.Set(V.ODBC.con!rstSetup.FieldValTrim!MONTHS_BACK)
+	F.Intrinsic.String.Concat("-",V.Local.stimeback,V.Local.stimeback)
+	V.Global.sAlldata.Set(V.ODBC.con!rstSetup.FieldValTrim!ALL_MONTHS)
+
+	V.Global.sRefresh.Set(V.ODBC.con!rstSetup.FieldValTrim!REFRESH)
+	V.Global.dRefreshDate.Set(V.ODBC.con!rstSetup.FieldVal!REFRESH_DATE)
+	F.Intrinsic.String.Format(V.Global.dRefreshDate,"YYYY-MM-DD",V.Global.sRefreshDate)
+
+	V.global.lCurrYear.Set(V.ODBC.con!rstSetup.FieldVal!CURRENT_YEAR)
+	V.Global.lPrevYear.Set(V.odbc.con!rstSetup.FieldVal!PREVIOUS_YEAR)
+
+	F.Intrinsic.String.Format(V.Global.dRefreshDate,"MM",V.Global.sRefreshMth)
+	F.Intrinsic.Math.ConvertToLong(V.Global.sRefreshMth,V.Global.lrefreshMth)
+
+	F.Intrinsic.String.Format(V.Global.dRefreshDate,"YYYY",V.Global.sRefreshYr)
+	F.Intrinsic.Math.ConvertToLong(V.Global.sRefreshYR,V.Global.lrefreshYR)
+
+	F.Intrinsic.String.Format(V.Ambient.Date,"YYYY",V.Local.sYearE)
+	F.Intrinsic.String.Format(V.Ambient.Date,"MM",V.Local.sMonthE)
+	f.Intrinsic.Date.DateAdd(M,v.Local.stimeback,v.Ambient.Date,v.Local.stemp)
+	F.Intrinsic.String.Format(V.Local.stemp,"YYYY",V.Local.sYearS)
+	F.Intrinsic.String.Format(V.Local.stemp,"MM",V.Local.sMonthS)
+	F.Intrinsic.String.Concat(V.Local.sYearS,"-",V.Local.sMonthS,"-01",V.Global.sDateStart)
+	F.Intrinsic.Control.If(V.Local.smonthE,=,"09","or",V.Local.sMonthE,=,"04")
+		F.Intrinsic.String.Concat(V.Local.sYearE,"-",V.Local.sMonthE,"-30",V.Global.sDateEnd)
+	F.Intrinsic.Control.ELSEIf(V.Local.smonthE,=,"06","or",V.Local.sMonthE,=,"11")
+		F.Intrinsic.String.Concat(V.Local.sYearE,"-",V.Local.sMonthE,"-30",V.Global.sDateEnd)
+	F.Intrinsic.Control.ElseIf(V.Local.sMonthE,=,"02")
+		'more logic for leap year...
+		F.Intrinsic.String.Concat(V.Local.sYearE,"-",V.Local.sMonthE,"-28",V.Global.sDateEnd)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Concat(V.Local.sYearE,"-",V.Local.sMonthE,"-31",V.Global.sDateEnd)
+	F.Intrinsic.Control.EndIf
+	'For Quick Debugging, start here
+	F.ODBC.con!rstSetup.Close
+
+	F.Intrinsic.Control.If(V.Global.sAlldata,=,1)
+		V.Global.sallDateE.Set(V.Ambient.Date)
+		F.ODBC.Connection!con.OpenLocalRecordsetRO("rstEnddate","SELECT * FROM V_INVENTORY_HIST ORDER BY DATE_HISTORY, INV_HIST_TIME ASC")
+		F.Intrinsic.Control.If(V.ODBC.con!rstEnddate.EOF,=,True)
+			V.Global.sallDateS.Set("1900-01-01")
+		F.Intrinsic.Control.Else
+			V.Global.sallDateS.Set(V.ODBC.con!rstEnddate.FieldVal!DATE_HISTORY)
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.String.Format(V.Global.sallDateS,"YYYY-MM-DD",V.Global.sallDateS)
+		F.ODBC.con!rstEnddate.Close
+	F.Intrinsic.Control.EndIf
+
+	F.Intrinsic.String.Format(V.Ambient.Date,"YYYY-MM-DD",V.Global.sallDateE)
+
+	Gui.frm_kpi_data.prg_kpi_data.Value("10")
+	Gui.frm_kpi_data.lblCaption.Caption("Building Late Costs")
+	F.Intrinsic.Control.CallSub(Routinelatecosts)
+	Gui.frm_kpi_data.prg_kpi_data.Value("20")
+	Gui.frm_kpi_data.lblCaption.Caption("Building Simple Inventory")
+	F.Intrinsic.Control.CallSub(Routinesimpinv)
+	Gui.frm_kpi_data.prg_kpi_data.Value("30")
+	Gui.frm_kpi_data.lblCaption.Caption("Building Sales Orders")
+	F.Intrinsic.Control.CallSub(Routine)
+	Gui.frm_kpi_data.lblCaption.Caption("Building On-Time Delivery")
+	'F.Intrinsic.Control.If(V.Local.sDashboard,=,"0")
+		'F.Global.General.CallWrapperSync(50,"DSH100/N")
+	'F.Intrinsic.Control.EndIF
+	Gui.frm_kpi_data.prg_kpi_data.Value("35")
+	Gui.frm_kpi_data.lblCaption.Caption("Building AP Open")
+	F.Intrinsic.Control.CallSub(Routineapopen)
+	Gui.frm_kpi_data.prg_kpi_data.Value("40")
+	Gui.frm_kpi_data.lblCaption.Caption("Building AR Open")
+	F.Intrinsic.Control.CallSub(Routinearopen)
+	Gui.frm_kpi_data.prg_kpi_data.Value("45")
+	Gui.frm_kpi_data.lblCaption.Caption("Building Inventory History")
+	F.Intrinsic.Control.CallSub(Routineinvhist)
+	Gui.frm_kpi_data.prg_kpi_data.Value("50")
+	Gui.frm_kpi_data.lblCaption.Caption("Building Indirect Labour")
+	F.Intrinsic.Control.CallSub(Routineindirectlabor)
+	F.Intrinsic.Control.CallSub(Routinedirectindirect)
+	Gui.frm_kpi_data.prg_kpi_data.Value("55")
+	Gui.frm_kpi_data.lblCaption.Caption("Building Jobs")
+	F.Intrinsic.Control.CallSub(Routinejobs)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Quotes")
+	Gui.frm_kpi_data.prg_kpi_data.Value("60")
+	F.Intrinsic.Control.CallSub(Routinequotes)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Quality")
+	Gui.frm_kpi_data.prg_kpi_data.Value("65")
+	F.Intrinsic.Control.CallSub(Routinequality)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Machine")
+	Gui.frm_kpi_data.prg_kpi_data.Value("75")
+	F.Intrinsic.Control.CallSub(Routinemachine)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Labour Costs")
+	Gui.frm_kpi_data.prg_kpi_data.Value("85")
+	F.Intrinsic.Control.CallSub(Routinelaborcost)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Workcentre Availability")
+	Gui.frm_kpi_data.prg_kpi_data.Value("90")
+	F.Intrinsic.Control.CallSub(Routinewcavailability)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Workcentre Usage")
+	Gui.frm_kpi_data.prg_kpi_data.Value("95")
+	F.Intrinsic.Control.CallSub(Routinewcusage)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Quality Dispositions")
+	F.Intrinsic.Control.CallSub(Routinequality2)
+	Gui.frm_kpi_data.lblCaption.Caption("Building Dupont Data")
+	F.Intrinsic.Control.CallSub(Routinedupont)
+	Gui.frm_kpi_data.prg_kpi_data.Value("100")
+
+	F.Intrinsic.Control.CallSub(Calcsales)
+
+	F.Intrinsic.Control.CallSub(Calcquotes1)
+
+	F.Intrinsic.Control.CallSub(Calcquotes2)
+
+	F.Intrinsic.Control.CallSub(Calcquality)
+
+	F.Intrinsic.Control.CallSub(Calcwc)
+
+	F.Intrinsic.Control.CallSub(Calcontime)
+
+	F.Intrinsic.Control.CallSub(Calcprod)
+
+	F.Intrinsic.Control.CallSub(Calclaborunit)
+
+	F.Intrinsic.Control.CallSub(Calcp16)
+
+	F.Intrinsic.Control.CallSub(Calcap)
+
+	F.Intrinsic.Control.CallSub(Calcar)
+
+	F.ODBC.Connection!con.Close
+
+	Gui.frm_kpi_data..Visible(0)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: CON_KPI_BUILD.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+Function.Intrinsic.Control.EndIf
+Program.Sub.Main.End
+
+Program.Sub.routineCalcSales.Start
+'Total sales by customer
+F.ODBC.Connection!con.Execute("INSERT INTO CON_KPI_RU_01(CUSTOMER_NAME,TOTAL_SALES) SELECT ROUND(SUM(SALES),2), NAME FROM CON_KPI_SALES GROUP BY NAME")
+
+Program.Sub.routineCalcSales.End
+
+Program.Sub.Comments.Start
+${$0$}$CON_KPI_BUILD$}$SUPERVSR$}$5/10/2015$}$False
+Program.Sub.Comments.End
+
